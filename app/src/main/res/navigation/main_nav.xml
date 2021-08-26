@@ -32,5 +32,10 @@
 
     <fragment android:id="@+id/newsDetails_fragment"
         android:name="com.bhanu.newsapp.ui.fragment.NewsDetailsFragment"
-        tools:layout="@layout/fragment_news_details"/>
+        tools:layout="@layout/fragment_news_details">
+        <argument
+            android:name="newsId"
+            app:argType="integer"
+            android:defaultValue="0"/>
+    </fragment>
 </navigation>

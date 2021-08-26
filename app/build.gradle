@@ -23,11 +23,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "SERVER_URL", "\"https://newsapi.org/v2/top-headlines\""
+            buildConfigField "String", "SERVER_URL", "\"https://newsapi.org/v2/\""
             buildConfigField "String", "API_KEY", "\"0ea90c84c338401386c2e5f3e3859da8\""
         }
         debug {
-            buildConfigField "String", "SERVER_URL", "\"https://newsapi.org/v2/top-headlines\""
+            buildConfigField "String", "SERVER_URL", "\"https://newsapi.org/v2/\""
             buildConfigField "String", "API_KEY", "\"0ea90c84c338401386c2e5f3e3859da8\""
         }
     }
@@ -62,6 +62,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     implementation "io.reactivex.rxjava2:rxandroid:2.0.2"
     implementation "io.reactivex.rxjava2:rxkotlin:2.4.0"
+    implementation 'androidx.room:room-rxjava2:2.3.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
 
     kapt 'com.google.dagger:dagger-compiler:2.38.1'
     implementation 'com.google.dagger:dagger:2.38.1'

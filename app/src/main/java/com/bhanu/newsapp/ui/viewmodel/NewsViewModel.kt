@@ -1,5 +1,6 @@
 package com.bhanu.newsapp.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,25 +22,23 @@ class NewsViewModel @Inject constructor(
     private val _progressbar = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _progressbar
 
-    private val _newsList = MutableLiveData<Article>()
-    val newsList: LiveData<Article> = _newsList
+    private val _newsList = MutableLiveData<ArrayList<Article>>()
+    val newsList: LiveData<ArrayList<Article>> = _newsList
 
     fun getTopNews() {
         compositeDisposable.add(
             newsRepository.getTopNews().observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .doOnSubscribe { _progressbar.postValue(true) }
-                .switchMap { data ->
-                    {
-
-                    }
-                    Observable.just(data)
+                .doOnError {
+                    Log.d("TAG", "onError: ${it.message}")
                 }
                 .subscribe(::handleResponse)
         )
     }
 
-    private fun handleResponse(newsResponse: NewsResponse) {
+    private fun handleResponse(newsList: List<Article>) {
+        _newsList.postValue(newsList as ArrayList<Article>)
         _progressbar.postValue(false)
     }
 
