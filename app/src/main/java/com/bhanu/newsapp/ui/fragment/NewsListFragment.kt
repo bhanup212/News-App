@@ -48,7 +48,6 @@ class NewsListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
         observeViewModel()
-        viewModel.getTopNews()
     }
 
     private fun initAdapter() {

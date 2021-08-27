@@ -2,6 +2,7 @@ package com.bhanu.newsapp.di.module
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.bhanu.newsapp.ui.viewmodel.NewsDetailsViewModel
 import com.bhanu.newsapp.ui.viewmodel.NewsViewModel
 import dagger.Binds
 import dagger.MapKey
@@ -22,6 +23,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(NewsViewModel::class)
     abstract fun provideNewsViewModel(newsViewModel: NewsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(NewsDetailsViewModel::class)
+    abstract fun provideNewsDetailsViewModel(newsViewModel: NewsDetailsViewModel): ViewModel
 }
 
 @Target(AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER)

@@ -38,6 +38,8 @@ class NewsListAdapter(private val onItemClick: (Article) -> Unit) : RecyclerView
             binding.root.setOnClickListener{
                 onItemClick(article)
             }
+            binding.source.text = article.sourceName
+            binding.date.text = article.publishedAt
             binding.title.text = article.title
             binding.description.text = article.description
             Glide.with(binding.imageView).load(article.urlToImage).placeholder(R.drawable.ic_baseline_menu_book).into(binding.imageView)
